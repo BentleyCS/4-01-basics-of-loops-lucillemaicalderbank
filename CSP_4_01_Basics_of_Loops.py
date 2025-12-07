@@ -1,4 +1,6 @@
 #All questions must use a loop for full points.
+from T2.CSP_4_01_Basics_of_Loops import result
+
 
 def oddNumbers(n:int) ->str:
     """
@@ -7,7 +9,14 @@ def oddNumbers(n:int) ->str:
     example oddNumbers(8) -> "1 3 5 7"
     example oddNumbers(-8) -> ""
     """
+result=""
 
+for i in range (1,n+1):
+    if i%2==1:
+        if result:
+            result+=""
+        result+=str(i)
+    return result
 
 def backwards(n)-> int:
     """
@@ -17,7 +26,10 @@ def backwards(n)-> int:
     example backwards(8) -> "8 7 6 5 4 3 2 1"
     example backwards(-2) -> ""
     """
-
+if n<1:
+    return
+for i in range(n,0,-1):
+    print(i,end="")
 
 
 def randomRepeating():
@@ -28,6 +40,11 @@ def randomRepeating():
     :return:
     """
     tries = 0
+    num=0
+    while num!=10:
+        num=random.randint(1,10)
+        print(num)
+        tries+=1
     print(f"it took {tries} tries to get a 10")
 def randomRange(n):
     """
@@ -37,12 +54,31 @@ def randomRange(n):
     :param n:
     :return:
     """
+    if n<=0
+        print(Give a positive number)
+        return
+    lowest=100
+    highest=1
+    for _ in range(n):
+        num=random.randint(1,100)
+        print(f"rolled:{num}")
+        if num>highest:
+            highest=num
+        if num<lowest:
+            lowest=num
+
+    print(f"Highest number rolled= {highest}")
+    print(f"Lowest number rolled= {lowest}")
 def reverse(word:str)->str:
     """
     Takes in a string as an argument and return the given string in reverse.
     example reverse("cat") -> "tac"
     example reverse("Hello") -> "olleH"
     """
+    reversed_word=""
+    for character in word:
+        reversed_word=character+reversed_word
+    return reversed_word
 
 def fizzBuzzContinuous(n):
     """
@@ -58,6 +94,14 @@ def fizzBuzzContinuous(n):
     :param n:
     :return:
     """
+    for i in range(1,n+1):
+        if i%3==0 and i%5==0:
+            result+="fizzbuzz"
+        elif i%3==0:
+            result+="fizz"
+        elif i%5==0:
+            result+=str(i)+""
+    return result.strip()
 
 def collatz(n):
     """
@@ -69,6 +113,15 @@ def collatz(n):
     :param n:
     :return:
     """
+    if n<=0:
+        return
+    while n!=1:
+        print(n,end="->")
+        if n%2==0:
+            n=n//2
+        else:
+            n=n*3+1
+    print(n)
 
 
 def fibonacci(n):
@@ -83,6 +136,15 @@ def fibonacci(n):
     :param n:
     :return:
     """
+    if n<=0:
+        return""
+    elif n==1:
+        return"0"
+    fibonacciseq=[0,1]
+    while len(fibonacciseq)<n:
+        nextnum=fibonacciseq[-1]+fibonacciseq[-2]
+        fibonacciseq.append(nextnum)
 
+    return"".join(str(num) for num in fibonacciseq[:n])
 
 print(fibonacci(300))
