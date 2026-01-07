@@ -6,19 +6,16 @@ def oddNumbers(n):
     result = ""
     for i in range(1, n + 1):
         if i % 2 == 1:
-            if result != "":
+            if result:
                 result += " "
             result += str(i)
     return result
 
 
 def backwards(n):
-    if n < 1:
-        return ""
-
     result = ""
     for i in range(n, 0, -1):
-        if result != "":
+        if result:
             result += " "
         result += str(i)
     return result
@@ -26,37 +23,39 @@ def backwards(n):
 
 def randomRepeating():
     tries = 0
-    num = 0
     result = ""
 
-    while num != 10:
+    while True:
         num = random.randint(1, 10)
-        result += str(num) + " "
         tries += 1
+        result += str(num) + " "
+        if num == 10:
+            break
 
-    result += "It took " + str(tries) + " tries to get a 10"
+    result += f"It took {tries} tries to get a 10"
     return result
 
 
 def randomRange(n):
     if n <= 0:
-        print("Give a positive number")
-        return
+        return "Give a positive number"
 
     lowest = 100
     highest = 1
+    result = ""
 
-    for i in range(n):
+    for _ in range(n):
         num = random.randint(1, 100)
-        print("rolled:", num)
+        result += f"rolled: {num}\n"
 
         if num > highest:
             highest = num
         if num < lowest:
             lowest = num
 
-    print("Highest number rolled =", highest)
-    print("Lowest number rolled =", lowest)
+    result += f"Highest number rolled = {highest}\n"
+    result += f"Lowest number rolled = {lowest}"
+    return result
 
 
 def reverse(word):
@@ -70,7 +69,7 @@ def fizzBuzzContinuous(n):
     result = ""
 
     for i in range(1, n + 1):
-        if i % 3 == 0 and i % 5 == 0:
+        if i % 15 == 0:
             value = "fizzbuzz"
         elif i % 3 == 0:
             value = "fizz"
@@ -79,7 +78,7 @@ def fizzBuzzContinuous(n):
         else:
             value = str(i)
 
-        if result != "":
+        if result:
             result += " "
         result += value
 
@@ -88,15 +87,17 @@ def fizzBuzzContinuous(n):
 
 def collatz(n):
     if n <= 0:
-        return
+        return ""
 
+    result = ""
     while n != 1:
-        print(n, end=" -> ")
+        result += str(n) + " -> "
         if n % 2 == 0:
-            n = n // 2
+            n //= 2
         else:
             n = n * 3 + 1
-    print(1)
+    result += "1"
+    return result
 
 
 def fibonacci(n):
@@ -106,15 +107,13 @@ def fibonacci(n):
         return "0"
 
     result = "0 1"
-    a = 0
-    b = 1
+    a, b = 0, 1
     count = 2
 
     while count < n:
         c = a + b
         result += " " + str(c)
-        a = b
-        b = c
+        a, b = b, c
         count += 1
 
     return result
