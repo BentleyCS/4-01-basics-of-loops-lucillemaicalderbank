@@ -22,6 +22,13 @@ def backwards(n):
     return result
 
 
+def reverse(word):
+    result = ""
+    for char in word:
+        result = char + result
+    return result
+
+
 def randomRepeating():
     tries = 0
     num = 0
@@ -87,14 +94,18 @@ def collatz(n):
         return ""
 
     result = ""
-    while n != 1:
-        result += str(n) + " -> "
-        if n % 2 == 0:
+    while True:
+        if result:
+            result += " "
+        result += str(n)
+
+        if n == 1:
+            break
+        elif n % 2 == 0:
             n //= 2
         else:
             n = n * 3 + 1
 
-    result += "1"
     return result
 
 
