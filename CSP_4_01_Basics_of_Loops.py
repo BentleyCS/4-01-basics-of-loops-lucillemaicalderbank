@@ -27,13 +27,15 @@ def backwards(n):
 def randomRepeating():
     tries = 0
     num = 0
+    result = ""
 
     while num != 10:
         num = random.randint(1, 10)
-        print(num)
+        result += str(num) + " "
         tries += 1
 
-    print("It took", tries, "tries to get a 10")
+    result += "It took " + str(tries) + " tries to get a 10"
+    return result
 
 
 def randomRange(n):
