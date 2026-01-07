@@ -1,7 +1,5 @@
 import random
 
-# All questions must use a loop for full points.
-
 def oddNumbers(n):
     result = ""
     for i in range(1, n + 1):
@@ -13,6 +11,9 @@ def oddNumbers(n):
 
 
 def backwards(n):
+    if n < 1:
+        return ""
+
     result = ""
     for i in range(n, 0, -1):
         if result:
@@ -23,16 +24,19 @@ def backwards(n):
 
 def randomRepeating():
     tries = 0
+    num = 0
     result = ""
 
     while True:
         num = random.randint(1, 10)
+        if result:
+            result += " "
+        result += str(num)
         tries += 1
-        result += str(num) + " "
         if num == 10:
             break
 
-    result += f"It took {tries} tries to get a 10"
+    result += " It took " + str(tries) + " tries to get a 10"
     return result
 
 
@@ -46,23 +50,16 @@ def randomRange(n):
 
     for _ in range(n):
         num = random.randint(1, 100)
-        result += f"rolled: {num}\n"
+        result += "rolled: " + str(num) + "\n"
 
         if num > highest:
             highest = num
         if num < lowest:
             lowest = num
 
-    result += f"Highest number rolled = {highest}\n"
-    result += f"Lowest number rolled = {lowest}"
+    result += "Highest number rolled = " + str(highest) + "\n"
+    result += "Lowest number rolled = " + str(lowest)
     return result
-
-
-def reverse(word):
-    reversed_word = ""
-    for character in word:
-        reversed_word = character + reversed_word
-    return reversed_word
 
 
 def fizzBuzzContinuous(n):
@@ -96,6 +93,7 @@ def collatz(n):
             n //= 2
         else:
             n = n * 3 + 1
+
     result += "1"
     return result
 
